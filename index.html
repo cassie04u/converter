@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Measurement</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="icon" href="./images/convert-icon-5.png">
+  </head>
+  <body class="bg-secondary-subtle w-100">
+    
+      <div class="card  m-4 bg-danger-subtle rounded rounded-4 shadow-lg justify-content-between d-flex position-absolute top-50 " style="left: 50%;transform: translate(-50%,-50%); width: 450px;">
+        <h1 class="mb-2 mt-3 text-center fst-italic fw-bold text-info-emphasis">
+          Weight Measurement
+        </h1>
+  
+        <div class="card-body justify-content-center d-flex">
+          <div class="container">
+            <input
+              type="text"
+              id="pound"
+              class="mb-2 w-50 col-lg-6 border me-3 border-1 border-warning"
+              placeholder="lb"
+            />
+  
+            <select
+              name=""
+              class="border col-lg-6 w-50 border-1 border-info bg-white"
+            >
+              <option id="kg" value="kg">kilogram</option>
+            </select>
+  
+            <button
+              class="btn shadow shadow-lg text-white btn-info rounded rounded-3"
+              id="convert"
+            >
+              Convert
+            </button>
+          </div>
+        </div>
+        <div class="mb-3">
+          <span class="d-inline-block ps-5 w-100"
+            ><button id="del" class="btn  btn-danger rounded rounded-3">
+              Delete
+            </button>
+            <button
+              id="store"
+              class="btn  btn-warning rounded rounded-3 text-warning-emphasis"
+            >
+              Store
+            </button></span
+          >
+          <span></span
+          ><span
+            class="d-inline-block ps-5 text-info-emphasis"
+            id="result"
+          ></span>
+  
+          <ul id="results" class="text-success"></ul>
+        </div>
+      </div>
+    
+
+    <script>
+      const lb = document.getElementById("pound");
+      const convert = document.getElementById("convert");
+      const resultElement = document.getElementById("result");
+      const del = document.getElementById("del");
+      const store = document.getElementById("store");
+      const results = document.getElementById("results");
+
+      // event listen
+      convert.onclick = () => {
+        const result = lb.value * 0.454 + "kg";
+        resultElement.innerText = `${lb.value}lb = ${result}`;
+        lb.value = null;
+      };
+      del.onclick = () => {
+        resultElement.innerText = null;
+      };
+      store.onclick = () => {
+        results.innerHTML += `<li>${resultElement.innerText}</li>`;
+        resultElement.innerText = null;
+      };
+    </script>
+  </body>
+</html>
